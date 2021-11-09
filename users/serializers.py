@@ -6,11 +6,22 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = '__all__'
 
+    def create(self, validated_data, *args, **kwargs):
+        user = User(**validated_data)
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
+
+    def update(self, instance, validated_data, *args, **kwargs):
+        user = super().update(instance, validated_data)
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
+
     def to_representation(self, instance):
-        
         return {
             'id': instance.id,
-            'Nombre de usuario': instance.username,
-            'Correo': instance.email,
-            'Contraseña': instance.password
+            'username': instance.username,
+            'email': instance.email,
+            'password': instance.password
         }

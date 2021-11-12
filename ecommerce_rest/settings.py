@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'simple_history',
     'users',
+    'base',
+    'products',
 ]
 
 MIDDLEWARE = [

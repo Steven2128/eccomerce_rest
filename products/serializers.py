@@ -23,7 +23,8 @@ class IndicatorSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    
+    measure_unit = serializers.StringRelatedField()
+    category_product = serializers.StringRelatedField()
     class Meta:
         model = Product
         exclude = ('state', 'created_date', 'modified_date', 'delete_date')

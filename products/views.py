@@ -15,3 +15,7 @@ class CategoryProductListView(ListAPIView):
 class IndicatorListView(ListAPIView):
     serializer_class = IndicatorSerializer
     queryset = Indicator.objects.filter(state=True)
+
+class ProductListView(ListAPIView):
+    serializer_class = ProductSerializer
+    queryset = Product.objects.filter(state=True)

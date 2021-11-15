@@ -1,6 +1,6 @@
 from django.db.models.query import QuerySet
 from rest_framework import serializers
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView
 from .models import *
 from .serializers import *
 
@@ -19,3 +19,6 @@ class IndicatorListView(ListAPIView):
 class ProductListView(ListAPIView):
     serializer_class = ProductSerializer
     queryset = Product.objects.filter(state=True)
+    
+class ProductCreateView(CreateAPIView):
+    serializer_class = ProductSerializer

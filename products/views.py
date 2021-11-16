@@ -1,6 +1,6 @@
 from django.db.models.query import QuerySet
 from rest_framework import serializers
-from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, DestroyAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, DestroyAPIView, UpdateAPIView
 from .models import *
 from .serializers import *
 
@@ -28,5 +28,9 @@ class ProductRetrieveview(RetrieveAPIView):
     queryset = Product.objects.all()
     
 class ProductDestroyview(DestroyAPIView):
+    serializer_class = ProductSerializer
+    queryset = Product.objects.all()
+    
+class ProductUpdateview(UpdateAPIView):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
